@@ -1,0 +1,27 @@
+[submodule "deps/reflex-platform"]
+	path = deps/reflex-platform
+	url = https://github.com/reflex-frp/reflex-platform
+[submodule "deps/servant-snap"]
+	path = deps/servant-snap
+	url = https://github.com/haskell-servant/servant-snap
+[submodule "deps/servant-reflex"]
+	path = deps/servant-reflex
+	url = https://github.com/imalsogreg/servant-reflex
+[submodule "deps/snap"]
+	path = deps/snap
+	url = https://github.com/snapframework/snap
+[submodule "deps/snap-loader-static"]
+	path = deps/snap-loader-static
+	url = https://github.com/snapframework/snap-loader-static
+[submodule "deps/snap-loader-dynamic"]
+	path = deps/snap-loader-dynamic
+	url = https://github.com/snapframework/snap-loader-dynamic
+[submodule "deps/servant"]
+	path = deps/servant
+	url = https://github.com/haskell-servant/servant
+[submodule "deps/clock"]
+	path = deps/clock
+	url = https://github.com/corsis/clock
+[submodule "deps/websockets-snap"]
+	path = deps/websockets-snap
+	url = https://github.com/imalsogreg/websockets-snap
