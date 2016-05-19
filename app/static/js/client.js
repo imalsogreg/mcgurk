@@ -98,7 +98,7 @@ function makeButton(modality, syllable){
         console.log(d);
         console.log(s);
     }
-    b.className = "button btn-default";
+    b.className = "btn btn-default btn-lg";
     b.setAttribute('type','button');
     $(b).on('click', function() {
         var pUrl = '/api1/respond/' + roomNum;
