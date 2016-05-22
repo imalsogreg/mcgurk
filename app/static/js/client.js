@@ -1,12 +1,15 @@
 "use strict";
 
 // This script is included by the audience-member client page
-// It's assumed that jquery is included earlier, and that
-// all the selectors have matching dom elmeents in the
-// client html file (no dom elements are created by this script)
 
-var modalities = ['Saw','Heard'];
 var syllables  = ['Fa', 'Ga', 'Ba', 'Da', 'Tha'];
+var modalityIcons = {Heard: 'headphones',
+                     Saw: 'eye-open'};
+
+function roomColor(n){
+    var h = Math.floor(n * 300/7);
+    return "hsla(" + h + ",29%,57%,1)"
+}
 
 function thisRoom(){
     var roomNum = parseInt(window.location.pathname.substring(1));
@@ -33,37 +36,11 @@ function wsUrl(){
     return wsloc
 }
 
-console.log( wsUrl() );
-
-// // Collect references to parts of the page we'll be twiddling
-// function pageParts(){
-//     function pagePart(selector){
-//         s = $(s);
-//         assert s.length > 0;
-//         return s;
-//     }
-//     parts.sawBox = pagePart('sawbox');
-//     parts.heardBox = pagePart('heardbox');
-//     return parts;
-// }
-
-
-// // Package a click as a message to the server
-// function responseMessage(modality,syllable){
-//     if (!(modalities.includes(modality) && syllables.includes(syllable))) {
-//         throw new Error ('Bad inputs to responseMessage');
-//     };
-//     var msg = {};
-//     msg.tag = 'Respond';
-//     msg.contents = { respModality: modality,
-//                      respSyllable: syllable};
-//     return msg;
-// }
 
 // Package a click as a message to the server
 function responseMessage(modality,syllable){
-    if (!(modalities.includes(modality) && syllables.includes(syllable))) {
-        throw new Error ('Bad inputs to responseMessage');
+    if ((modalityIcons[modality] == undefined) || !syllables.includes(syllable)){
+        throw new Error ('Bad inputs to responseMessage: ' + modality + ', ' + syllable);
     };
     var msg = { respModality: modality,
                 respSyllable: syllable};
@@ -75,9 +52,14 @@ function makeButtons(){
 
     var c = $('.content');
 
-    modalities.forEach(function(m) {
+    for (var m in modalityIcons) {
 
-        var d = document.createElement('div');
+        var d      = document.createElement('div');
+        var header = document.createElement('span');
+        $(d).append(header);
+
+        header.setAttribute('class', 'glyphicon glyphicon-' + modalityIcons[m]);
+        header.setAttribute('aria-hidden','true');
 
         syllables.forEach(function(s){
 
@@ -87,7 +69,8 @@ function makeButtons(){
         });
 
         c.append(d);
-    });
+    }
+
 }
 
 function makeButton(modality, syllable){
@@ -119,3 +102,5 @@ function makeButton(modality, syllable){
 }
 
 makeButtons();
+$('.content').css('background-color', roomColor( thisRoom() ));
+$('.glyphicon').css('color', roomColor( thisRoom() ));

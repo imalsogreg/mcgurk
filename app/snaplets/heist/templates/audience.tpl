@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="static/css/audience.css"/>
   </head>
   <body>
-    <div class="content" style="background-color:grey;">
+    <div class="content">
     </div>
   </body>
   <script language="javascript" src="static/js/client.js" defer></script>

@@ -1,9 +1,14 @@
+body {
+    background-color: hsla(291,29%,57%,1);
+}
+
 .content {
     display: flex;
     justify-content: space-around;
-    box-shadow: 5px 5px 10px hsla(0,0%,0%,0.2);
-    max-width: 80%;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
+    background-color: hsla(291,29%,57%,1);
 }
 
 .content > div {
@@ -11,12 +16,33 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
     height: 100%;
+    color:  hsla(291,29%,57%,1);
+    font-size: 30pt;
 }
 
-button {
+.content > div > span {
+    background-color:white;
+    padding: 20px;
+    border-radius:100px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+}
+
+.btn {
+    border-radius: 100px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid white;
+    color:  white;
     margin: 10px;
     height: 10%;
-    box-shadow: 5px 5px 10px hsla(0,0%,0%,0.1);
+    width: 80%;
+    box-shadow: 0px 0px 10px hsla(0,0%,100%,0.1);
+    font-size:30pt;
+}
+
+.btn:hover {
+    color: white;
+    background-color: hsla(0,0%,100%,0.5);
 }

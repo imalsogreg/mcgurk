@@ -59,11 +59,12 @@ data VideoWidget t = VideoWidget
 -- | Create a video playing widget with access to video controls, events, and
 --   state
 videoWidget :: MonadWidget t m
+            => String -- ^ Media element tag (probably "video" or "audio")
             => [(String, String)] -- ^ Pairs of source url and mime-type
             -> VideoWidgetConfig t
             -> m (VideoWidget t)
-videoWidget srcs cfg = do
-  (vidEl, vidSrcs) <- elDynAttr' "video" (_videoWidgetConfig_attributes cfg) $
+videoWidget tag srcs cfg = do
+  (vidEl, vidSrcs) <- elDynAttr' tag (_videoWidgetConfig_attributes cfg) $
     forM srcs $ \src ->
       fmap fst $ elDynAttr' "source"
                             (_videoWidgetConfig_sourceAttributes cfg src)
